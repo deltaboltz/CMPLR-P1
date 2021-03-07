@@ -18,11 +18,11 @@ struct token {
     std::pair<int, int> size;
     std::map<int, std::string> idmap = {
         { error,      "\nSCANNER ERROR:\n"},
-        { identifier, "IdTK:" },
-        { integer,    "NumTK:" },
-        { opordel,    "OpTK:" },
-        { keyword,    "KwTK:" },
-        { eoftk,      "EOFTK" }
+        { identifier, "idTK:" },
+        { integer,    "numTK:" },
+        { opordel,    "opTK:" },
+        { keyword,    "kwTK:" },
+        { eoftk,      "eofTK" }
     };
     token(enum tokenID tid, std::string tinst, std::pair<int, int> tpos,
         std::pair<int, int> tsize) : id(tid), instance(tinst), pos(tpos), size(tsize) {}

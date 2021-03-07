@@ -2,7 +2,7 @@
 
 How to Run:
 
-make clean
+make clean -
   cleans the left over objects, binaries, and compiled items in the director
   
 make

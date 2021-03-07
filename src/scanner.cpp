@@ -59,7 +59,7 @@ token scan(std::istream& in, const int lineNum, const int charNum)
                 linePos++;
                 charPos = 1;
                 lineSize++;
-                charSize = 1-charNo;
+                charSize = 1-charNum;
             }
             else if (c == 32 || c == 9)
             {
@@ -73,7 +73,7 @@ token scan(std::istream& in, const int lineNum, const int charNum)
                 linePos++;
                 charPos = 1;
                 lineSize++;
-                charSize = 1-charNo;
+                charSize = 1-charNum;
             }
         }
         else if (state > 1 && state < 11)
@@ -92,14 +92,14 @@ token scan(std::istream& in, const int lineNum, const int charNum)
     capture = capture.substr(0,capture.length()-1);
     std::pair<int, int> pos = std::make_pair(linePos,charPos);
     std::pair<int, int> size = std::make_pair(lineSize, charSize);
-    std::pair<int, int> erpos = std::make_pair(lineNo+lineSize, charNo+charSize);
+    std::pair<int, int> erpos = std::make_pair(lineNum+lineSize, charNum+charSize);
 
     switch(state)
     {
         case -1: return token(error,"No valid token begins with character '" + e + "'", erpos, size);
         case 0: return token(error,"Illegal character '" + e + "'", erpos, size);
-        case 1001: return token(filterKeywords(capture), capture, pos, size);
-        case 1005: return token(eofTK, "EOF", pos, size);
+        case 1001: return token(filterKeyword(capture), capture, pos, size);
+        case 1005: return token(eoftk, "EOF", pos, size);
     }
 
     return token((tokenID)state, capture, pos, size);

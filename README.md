@@ -2,8 +2,8 @@
 
 How to Run:
 
-make clean -
-  cleans the left over objects, binaries, and compiled items in the director
+make clean:
+cleans the left over objects, binaries, and compiled items in the director
   
 make
   compiles the entire program

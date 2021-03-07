@@ -13,12 +13,12 @@ void testScan(std::istream& in)
 
   token t = scan(in, lineNum, charNum);
 
-  while(t.id != eofTK && t.id > 1000)
+  while(t.id != eoftk && t.id > 1000)
   {
     lineNum += std::get<0>(t.size);
     charNum += std::get<1>(t.size);
     cout << t.toString() << "\n";
-    t = scan(in, lineNum, charNum)
+    t = scan(in, lineNum, charNum);
   }
 
   cout << t.toString() << "\n";

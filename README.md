@@ -10,3 +10,5 @@ make:
 
 scanner *filename*:
   runs the program *filename* is the file you wish to run in this program
+  NOTE: test.sp21 is included with the program for an example run
+	!!!THE PROGRAM ONLY READS IN FILES WITH EXTENSION OF .SP21!!!

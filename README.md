@@ -1,5 +1,10 @@
 # CMPLR-P1 for CS 4280 @ UMSL
 
+IMPLEMENTATION 3
+FSA Table is located inside the main directory with the entire program (fsa map.csv)
+Driver is labled as fsa.h to locate and tell the map what is what value 
+
+
 How to Run:
 
 make linclean:

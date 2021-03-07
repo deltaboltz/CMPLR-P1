@@ -7,18 +7,18 @@ using namespace std;
 
 enum tkID
 {
-  error = 00;
-  identifier = 01;
-  integer = 02;
-  opordel = 03;
-  keyword = 04;
-  eof = 05;
+  error = 0;
+  identifier = 1001;
+  integer = 1002;
+  opordel = 1003;
+  keyword = 1004;
+  eof = 1005;
 };
 
 struct token
 {
   enum tkID id;
-  string instance
+  string instance;
   pair<int, int> position;
   pair<int, int> size;
   map<int, string> idmap =
@@ -31,7 +31,7 @@ struct token
     {eof, "eofTK"}
   };
 
-  token(enum tkID tid, string tinstr, pair<int, int> tposition), pair<int, int> tsize: id(tid), instance(tinstr), position(tpos), size(tsize) {}
+  token(enum tkID tid, string tinstr, pair<int, int> tposition, pair<int, int> tsize) : id(tid), instance(tinstr), position(tpos), size(tsize) {}
 
   string toString()
   {
@@ -56,6 +56,7 @@ struct token
       sout.append(28 - sout.length(), ' ');
       sout += "Line " + posString;
     }
+    return sout;
   }
 };
 

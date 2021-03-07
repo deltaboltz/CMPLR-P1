@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include "testScanner.h"
 
 using namespace std;
 
@@ -8,7 +9,7 @@ int main(int argc, char* argv[])
 {
   if(argc == 1)
   {
-    //test scanner
+    testScan(cin);
   }
   else if(argc == 2) //check to see if the file has the proper extension
   {
@@ -34,7 +35,7 @@ int main(int argc, char* argv[])
 
     if(fs)
     {
-      //test scanner
+      testScan(fs);
     }
     else
     {

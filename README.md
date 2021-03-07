@@ -2,12 +2,11 @@
 
 How to Run:
 
-make clean:
+make linclean:
 cleans the left over objects, binaries, and compiled items in the director
   
-make
+make:
   compiles the entire program
 
-./scanner [filename]
-  runs the program [filename] is the file you wish to run in this program 
-  NOTE : do not include the [] around the file you wish to input
+scanner *filename*:
+  runs the program *filename* is the file you wish to run in this program

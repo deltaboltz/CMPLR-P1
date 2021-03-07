@@ -11,7 +11,7 @@ FIL3 := $(OBJ_DIR)/testScanner.o
 SRC  := $(wildcard $(SRC_DIR)/*.cpp)
 OBJ  := $(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
-CC		   := g++
+CC		 := g++ -std=c++11
 CPPFLAGS := -Iinclude -MMD -MP
 CFLAGS 	 := -Wall -g
 

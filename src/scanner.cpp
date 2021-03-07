@@ -9,25 +9,25 @@ using namespace std;
 
 tokenID filterKeyword(std::string cap)
 {
-  if (cap == begin) return keyword;
-  if (cap == end) return keyword;
-  if (cap == loop) return keyword;
-  if (cap == whole) return keyword;
-  if (cap == void) return keyword;
-  if (cap == exit) return keyword;
-  if (cap == getter) return keyword;
-  if (cap == outter) return keyword;
-  if (cap == main) return keyword;
-  if (cap == if) return keyword;
-  if (cap == then) return keyword;
-  if (cap == assign) return keyword;
-  if (cap == data) return keyword;
-  if (cap == proc) return keyword;
+  if (cap == "begin") return keyword;
+  if (cap == "end") return keyword;
+  if (cap == "loop") return keyword;
+  if (cap == "whole") return keyword;
+  if (cap == "void") return keyword;
+  if (cap == "exit") return keyword;
+  if (cap == "getter") return keyword;
+  if (cap == "outter") return keyword;
+  if (cap == "main") return keyword;
+  if (cap == "if") return keyword;
+  if (cap == "then") return keyword;
+  if (cap == "assign") return keyword;
+  if (cap == "data") return keyword;
+  if (cap == "proc") return keyword;
 
   return identifier;
 }
 
-token scan(std::istream& in, const int lineNo, const int charNo)
+token scan(std::istream& in, const int lineNum, const int charNum)
 {
     int linePos = lineNum;
     int charPos = charNum;

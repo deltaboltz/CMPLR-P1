@@ -9,7 +9,7 @@ Driver function is token scan(std::istream& in, const int lineNum, const intchar
 How to Run:
 
 make linclean:
-cleans the left over objects, binaries, and compiled items in the director
+cleans the left over objects, binaries, and compiled items in the directory
   
 make:
   compiles the entire program

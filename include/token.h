@@ -1,63 +1,51 @@
 #ifndef TOKEN_H
 #define TOKEN_H
-
 #include <map>
 
-using namespace std;
-
-enum tkID
-{
-  error = 0;
-  identifier = 1001;
-  integer = 1002;
-  opordel = 1003;
-  keyword = 1004;
-  eof = 1005;
+enum tokenID {
+    error=0,
+    identifier=1001,
+    integer=1002,
+    opordel=1003,
+    keyword=1004,
+    eoftk=1005
 };
 
-struct token
-{
-  enum tkID id;
-  string instance;
-  pair<int, int> position;
-  pair<int, int> size;
-  map<int, string> idmap =
-  {
-    {error, "\n SCAN ERROR:\n"},
-    {identifier, "idTK"},
-    {integer, "numTK"},
-    {opordel, "opTK"},
-    {keyword, "kwTK"},
-    {eof, "eofTK"}
-  };
+struct token {
+    enum tokenID id;
+    std::string instance;
+    std::pair<int, int> pos;
+    std::pair<int, int> size;
+    std::map<int, std::string> idmap = {
+        { error,      "\nSCANNER ERROR:\n"},
+        { identifier, "IdTK:" },
+        { integer,    "NumTK:" },
+        { opordel,    "OpTK:" },
+        { keyword,    "KwTK:" },
+        { eoftk,      "EOFTK" }
+    };
+    token(enum tokenID tid, std::string tinst, std::pair<int, int> tpos,
+        std::pair<int, int> tsize) : id(tid), instance(tinst), pos(tpos), size(tsize) {}
+    std::string toString() {
+        std::string out("");
+        std::string posString("");
+        std::string sizeString("");
+        posString += std::to_string(std::get<0>(pos)) + ":" +\
+                     std::to_string(std::get<1>(pos));
+        sizeString += std::to_string(std::get<0>(size)) + ":" +\
+                      std::to_string(std::get<1>(size));
+        if (id == error) {
+            out += idmap[id] + posString + ": " + instance;
+        } else {
+            out += idmap[id];
+            out.append(16 - out.length(), ' ');
+            out += instance;
+            out.append(28 - out.length(), ' ');
+            out += "Line " + posString;
+        }
 
-  token(enum tkID tid, string tinstr, pair<int, int> tposition, pair<int, int> tsize) : id(tid), instance(tinstr), position(tpos), size(tsize) {}
-
-  string toString()
-  {
-    string sout("");
-    string posString("");
-    string sizeOfString("");
-
-    posString += to_string(get<0>(position)) + ":" + to_string(get<1>(position));
-
-    sizeOfString += to_string(get<0>(size)) + ":" + to_string(get<1>(size));
-
-    if(id = error)
-    {
-      sout += idmap[id] + posString + ": " + instance;
+        return out;
     }
-    else
-    {
-      sout += idmap[id];
-      sout.append(16 - sout.length(), ' ');
-      sout += instance;
-
-      sout.append(28 - sout.length(), ' ');
-      sout += "Line " + posString;
-    }
-    return sout;
-  }
 };
 
 #endif

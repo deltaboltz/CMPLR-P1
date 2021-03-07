@@ -1,46 +1,18 @@
-SRC_DIR	:= src
-OBJ_DIR := obj
-BIN_DIR := bin
+CC=g++
+CFLAGS=-I.
 
-EXE1 := main
-FIL1 := $(OBJ_DIR)/main.o
-EXE2 := scanner
-FIL2 := $(OBJ_DIR)/scanner.o
-EXE3 := testScanner
-FIL3 := $(OBJ_DIR)/testScanner.o
-SRC  := $(wildcard $(SRC_DIR)/*.cpp)
-OBJ  := $(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
+%.o: %.cpp
+	$(CC) -std=c++11 -c -o $@ $< $(CFLAGS)
 
-CC		 := g++ -std=c++11
-CPPFLAGS := -Iinclude -MMD -MP
-CFLAGS 	 := -Wall -g
+scanner: main.o testScanner.o scanner.o
+	$(CC) -std=c++11 -Wall -o scanner main.o testScanner.o scanner.o
 
-.PHONY: all tests clean cleanrun
+winclean:
+	del /Q /S *.o
 
-all: $(EXE1) $(EXE2) $(EXE3)
+linclean:
+	rm -f scanner
+	rm -f *.o
 
-$(EXE1): $(filter-out $(FIL1), $(OBJ))
-	$(CC) $^ -o $@
-
-$(EXE2): $(filter-out $(FIL2), $(OBJ))
-	$(CC) $^ -o $@
-
-$(EXE3): $(filter-out $(FIL3), $(OBJ))
-	$(CC) $^ -o $@
-
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
-	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
-
-$(OBJ_DIR):
-	mkdir -p $@
-
-clean:
-	@$(RM) -rv $(BIN_DIR) $(OBJ_DIR)
-	rm main
-
-cleanrun:
-	@$(RM) -rv $(BIN_DIR)/*.out $(BIN_DIR)/*.log
-
-
-
--include $(OBJ:.o=.d)
+run:
+	scanner input.fs19

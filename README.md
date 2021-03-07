@@ -4,6 +4,7 @@ IMPLEMENTATION 3
 FSA Table is located inside the main directory with the entire program (fsa map.csv)
 Driver function is token scan(std::istream& in, const int lineNum, const intcharNum)
 	This is located in scanner.cpp
+	fsa.h has the pairings of values { ASCII, tokenID},
 
 How to Run:
 

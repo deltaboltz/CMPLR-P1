@@ -47,13 +47,13 @@ token scan(std::istream& in, const int lineNum, const int charNum)
 
         if(state==1)
         {
-            if (c > 32 && c != 35)
+            if (c > 32 && c != 36)
             {
-                //Is not leading whitespace, capture this (except #)
+                //Is not leading whitespace, capture this (except $$)
                 capture += std::string(1, c);
                 charSize++;
             }
-            else if (c == 35)
+            else if (c == 36)
             {
                 //set token to start at beginning of next line
                 linePos++;
@@ -76,7 +76,7 @@ token scan(std::istream& in, const int lineNum, const int charNum)
                 charSize = 1-charNum;
             }
         }
-        else if (state > 1 && state < 11)
+        else if (state > 1 && state < 13)
         {
             capture += std::string(1, c);
             charSize++;
